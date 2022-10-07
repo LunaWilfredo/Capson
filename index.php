@@ -1,3 +1,11 @@
+<?php 
+
+require_once 'Controller/UsuarioController.php';
+
+if(isset($_POST['nameu'])){
+  $registro=UsuarioController::registrar();
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
   <head>
@@ -5,6 +13,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LBY Store</title>
+    <!-- Icono de pestaña -->
+    <link rel="icon" href="App/Img/image 1.png" type="image/x-icon">
     <!-- Bootstap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
@@ -20,12 +30,17 @@
       crossorigin="anonymous"
     ></script>
   </head>
+
   <body>
+    <!-- alertas -->
+    <?php if($registro='ok'){?> 
+      <div class="alert alert-success">Registro Exitoso</div>
+    <?php }?>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="#"
-            ><img src="/App/Img/image 1.png" alt=""
+            ><img src="./App/Img/image 1.png" alt=""
           /></a>
           <button
             class="navbar-toggler"
@@ -44,7 +59,13 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item bg-primary rounded-circle">
-                <a class="nav-link active text-light" href="#"><i class="fas fa-shopping-cart"></i></a>
+                <button type="button" class="btn btn-primary position-relative">
+                  <i class="fas fa-shopping-cart"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    99+
+                    <span class="visually-hidden">unread messages</span>
+                  </span>
+                </button>
               </li>
               <li class="nav-item">
                 <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#login">
@@ -73,7 +94,7 @@
       <div class="container p-5">
         <div class="row">
           <div class="col">
-            <img src="/App/Img/Rectangle 22.png" alt="" class="img rounded" />
+            <img src="./App/Img/Rectangle 22.png" alt="" class="img rounded" />
           </div>
           <div
             class="col d-flex m-auto justify-content-center align-content-center"
@@ -93,7 +114,7 @@
           <div class="col">
             <div class="card bg-secondary p-2 rounded-3">
               <img
-                src="/App/Img/Productos/image 2.png"
+                src="./App/Img/Productos/image 2.png"
                 alt=""
                 class="img mb-3"
               />
@@ -110,7 +131,7 @@
           <div class="col">
             <div class="card bg-secondary p-2 rounded-3">
               <img
-                src="/App/Img/Productos/image 3.png"
+                src="./App/Img/Productos/image 3.png"
                 alt=""
                 class="img mb-3"
               />
@@ -127,7 +148,7 @@
           <div class="col">
             <div class="card bg-secondary p-2 rounded-3">
               <img
-                src="/App/Img/Productos/image 4.png"
+                src="./App/Img/Productos/image 4.png"
                 alt=""
                 class="img mb-3"
               />
@@ -144,7 +165,7 @@
           <div class="col">
             <div class="card bg-secondary p-2 rounded-3">
               <img
-                src="/App/Img/Productos/image 6.png"
+                src="./App/Img/Productos/image 6.png"
                 alt=""
                 class="img mb-3"
               />
@@ -183,6 +204,8 @@
         </div>
     </footer>
 
+
+
     <!-- JS -->
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -217,27 +240,34 @@
     </div>
 </div>
 
-
+<!-- Registro -->
 <div class="modal fade" id="registro" tabindex="-1" aria-labelledby="registro" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="">Nombre</label>
-            <input type="text" name="" value="" class="form-control">
-            <label for="">Correo</label>
-            <input type="text" name="" value="" class="form-control">
-            <label for="">Contraseña</label>
-            <input type="text" name="" value="" class="form-control">
+        <form action="" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" name="nameu" value="" class="form-control">
+  
+              <label for="">Apellido</label>
+              <input type="text" name="apeu" value="" class="form-control">
+  
+              <label for="">Correo</label>
+              <input type="text" name="correou" value="" class="form-control">
+  
+              <label for="">Contraseña</label>
+              <input type="text" name="claveu" value="" class="form-control">
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success">Registrarse</button>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Registrarse</button>
+          </div>
+        </form>
       </div>
     </div>
 </div>
