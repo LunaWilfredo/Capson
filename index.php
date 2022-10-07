@@ -5,6 +5,12 @@ require_once 'Controller/UsuarioController.php';
 if(isset($_POST['nameu'])){
   $registro=UsuarioController::registrar();
 }
+
+if(isset($_POST['useri']) && isset($_POST['passi'])){
+  $prelog=UsuarioController::prelog();
+  var_dump($prelog);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -58,7 +64,7 @@ if(isset($_POST['nameu'])){
             id="navbarNavDropdown"
           >
             <ul class="navbar-nav">
-              <li class="nav-item bg-primary rounded-circle">
+              <li class="nav-item">
                 <button type="button" class="btn btn-primary position-relative">
                   <i class="fas fa-shopping-cart"></i>
                     <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
@@ -217,30 +223,32 @@ if(isset($_POST['nameu'])){
 
 
 
-<!-- Modal -->
+<!-- Modal Login-->
 <div class="modal fade" id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
         </div>
-        <div class="modal-body">
-          <div class="form-group">
-            <label for="">Usuario</label>
-            <input type="text" name="" value="" class="form-control">
-            <label for="">Contraseña</label>
-            <input type="text" name="" value="" class="form-control">
+        <form action="" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Usuario</label>
+              <input type="text" name="useri" value="" class="form-control">
+              <label for="">Contraseña</label>
+              <input type="text" name="passi" value="" class="form-control">
+            </div>
           </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-success">Ingresar</button>
-        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Ingresar</button>
+          </div>
+        </form>
       </div>
     </div>
 </div>
 
-<!-- Registro -->
+<!-- Modal Registro -->
 <div class="modal fade" id="registro" tabindex="-1" aria-labelledby="registro" aria-hidden="true">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">

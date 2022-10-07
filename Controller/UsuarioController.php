@@ -18,6 +18,16 @@ class UsuarioController{
             return $respuesta;
         }
     }
+
+    static public function prelog(){
+        if(isset($_POST['useri']) && !empty($_POST['useri']) && isset($_POST['passi']) && !empty($_POST['passi'])){
+            $tabla="clientes";
+            $useri=$_POST['useri'];
+            $passi=$_POST['passi'];
+            $respuesta=UsuarioModel::prelog($tabla,$useri,$passi);
+            return $respuesta;
+        }
+    }
 }
 
 ?>

@@ -21,6 +21,16 @@ class UsuarioModel{
         $cn->close();
         $cn=NULL;
     }
+
+    static public function prelog($tabla,$useri,$passi){
+        $sql="SELECT * FROM $tabla WHERE mail_c = '$useri' AND pass_c = '$passi' ";
+        $cn=Conexion::conexion()->prepare($sql);
+        $cn->execute();
+        return $cn->fetchAll();
+
+        $cn->close();
+        $cn=NULL;
+    }
 }
 
 ?>
