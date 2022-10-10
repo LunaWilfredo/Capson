@@ -28,6 +28,28 @@ class UsuarioController{
             return $respuesta;
         }
     }
-}
 
+    static public function login($user,$clave){
+        if(isset($_POST['useri']) && !empty($_POST['useri']) && isset($_POST['passi']) && !empty($_POST['passi'])){
+            $user=$_POST['useri'];
+            $clave=$_POST['passi'];
+            $tabla='clientes';
+            $respuesta=UsuarioModel::login($user,$clave,$tabla);
+            if($respuesta =='ok'){
+                $info=UsuarioModel::prelog($tabla,$user,$clave);
+                if($info){
+                    foreach($info as $d){
+                        $dname=$d['name_c'];
+                        $dlast=$d['last_c'];
+                    }
+                }
+                session_start();
+                $_SESSION['user']= $dname." ".$dlast;
+            }else{
+                header('Location:index.php');
+            }
+        }
+        return $respuesta;
+    }
+}
 ?>

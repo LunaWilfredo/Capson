@@ -31,6 +31,18 @@ class UsuarioModel{
         $cn->close();
         $cn=NULL;
     }
+
+    static public function login($user,$clave,$tabla){
+        $sql="SELECT * FROM $tabla WHERE mail_c = '$user' AND pass_c = '$clave' ";
+        $cn=Conexion::conexion()->prepare($sql);
+        $cn->execute();
+        if($cn->execute()){
+            return 'ok';
+        }
+
+        $cn->close();
+        $cn=NULL;
+    }
 }
 
 ?>
