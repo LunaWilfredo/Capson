@@ -1,12 +1,12 @@
 <?php
-
+session_start();
 //header
 include_once 'View/Layout/header.php';
 //body
 if(isset($_GET['p'])&&!empty($_GET['p'])){
   $p=$_GET['p'];
-  if($p=='body'){
-    require_once 'View/cliente/'.$_GET['p'].'.php';
+  if($p=='body' || $p=='clienteHome' || $p='car'){
+    require_once 'View/Content/'.$_GET['p'].'.php';
   }else{
     require_once 'body.php';
   }

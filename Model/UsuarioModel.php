@@ -17,9 +17,7 @@ class UsuarioModel{
         }else{
             return print_r(Conexion::conexion()->errorInfo());
         }
-        
-        $cn->close();
-        $cn=NULL;
+    
     }
 
     static public function prelog($tabla,$useri,$passi){
@@ -27,21 +25,16 @@ class UsuarioModel{
         $cn=Conexion::conexion()->prepare($sql);
         $cn->execute();
         return $cn->fetchAll();
-
-        $cn->close();
-        $cn=NULL;
     }
 
+    //funcion para obtenes datos de usuario 
     static public function login($user,$clave,$tabla){
         $sql="SELECT * FROM $tabla WHERE mail_c = '$user' AND pass_c = '$clave' ";
         $cn=Conexion::conexion()->prepare($sql);
         $cn->execute();
         if($cn->execute()){
-            return 'ok';
+            return $cn->fetchAll();
         }
-
-        $cn->close();
-        $cn=NULL;
     }
 }
 

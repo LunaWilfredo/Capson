@@ -1,8 +1,12 @@
-<?php include_once 'View/Layout/header.php' ?>
+<?php include_once 'View/Layout/header.php';
+//lista de productos
+$productos = ProductosController::listarProductos();
+var_dump($productos);
+?>
     <header>
-      <div class="container-fluid bg-primary p-5">
-        <div class="border p-5 mx-5">
-          <h1 class="display-1 border me-5 pe-5">
+      <div class="container-fluid bg-secondary p-5">
+        <div class="p-5 mx-5">
+          <h1 class="display-1 mx-5 px-5 text-light">
             Productos para el cuidado de la salud de tu familia
           </h1>
         </div>
@@ -16,12 +20,9 @@
             <img src="./App/Img/Rectangle 22.png" alt="" class="img rounded" />
           </div>
           <div
-            class="col d-flex m-auto justify-content-center align-content-center"
+            class="col d-flex m-auto justify-content-center align-content-center display-6"
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
-            illo suscipit illum fugiat? Suscipit itaque cumque dicta deleniti
-            ratione repellat dolore? Consequatur illum a deleniti corrupti quis
-            dolorem quae itaque!
+            Somos una empresa productora de productos de salud para hospitales nacionales o privados.Con mas de 30 años en el mercado de la salud.
           </div>
         </div>
       </div>
@@ -30,73 +31,22 @@
     <section id="">
       <div class="container p-4">
         <div class="row">
+          <?php foreach($productos as $prod):?>
+          <!-- producto inicio -->
           <div class="col">
             <div class="card bg-secondary p-2 rounded-3">
-              <img
-                src="./App/Img/Productos/image 2.png"
-                alt=""
-                class="img mb-3"
-              />
+              <img src="./App/Img/Productos/image 2.png" alt="" class="img mb-3"/>
               <div class="">
-                <h6 class="">Nombre de Producto</h6>
-                <h5 class="">S/.20.00</h5>
+                <h6 class="text-light"><?=$prod['name_p']?></h6>
+                <h5 class="text-light"><?=$prod['price_p']?></h5>
               </div>
-              <button type="" class="btn btn-success">
+              <button type="" class="btn btn-primary">
                 <i class="fas fa-cart-plus"></i>
               </button>
             </div>
           </div>
-
-          <div class="col">
-            <div class="card bg-secondary p-2 rounded-3">
-              <img
-                src="./App/Img/Productos/image 3.png"
-                alt=""
-                class="img mb-3"
-              />
-              <div class="">
-                <h6 class="">Nombre de Producto</h6>
-                <h5 class="">S/.20.00</h5>
-              </div>
-              <button type="" class="btn btn-success">
-                <i class="fas fa-cart-plus"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card bg-secondary p-2 rounded-3">
-              <img
-                src="./App/Img/Productos/image 4.png"
-                alt=""
-                class="img mb-3"
-              />
-              <div class="">
-                <h6 class="">Nombre de Producto</h6>
-                <h5 class="">S/.20.00</h5>
-              </div>
-              <button type="" class="btn btn-success">
-                <i class="fas fa-cart-plus"></i>
-              </button>
-            </div>
-          </div>
-
-          <div class="col">
-            <div class="card bg-secondary p-2 rounded-3">
-              <img
-                src="./App/Img/Productos/image 6.png"
-                alt=""
-                class="img mb-3"
-              />
-              <div class="">
-                <h6 class="">Nombre de Producto</h6>
-                <h5 class="">S/.20.00</h5>
-              </div>
-              <button type="" class="btn btn-success">
-                <i class="fas fa-cart-plus"></i>
-              </button>
-            </div>
-          </div>
+          <!-- producto end -->
+          <?php endforeach;?>
         </div>
       </div>
     </section>

@@ -14,15 +14,12 @@ if(isset($_POST['useri']) && isset($_POST['passi'])){
     $clave=$_POST['passi'];
     //validacion de datos
     $login=UsuarioController::login($user,$clave);
-}else{
-    echo '
-        <div class="container">
-            <div class="alert alert-danger" role="alert">
-                Usuario no registrado!
-            </div>
-        </div>';
 }
 
+if(isset($_GET['c'])){
+    $cerrar= New UsuarioController;
+    $cerrar-> cerrarSesion($_GET['c']);
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,15 +33,15 @@ if(isset($_POST['useri']) && isset($_POST['passi'])){
     <!-- Bootstap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <!-- css -->
-    <link rel="stylesheet" href="" type="style/css" />
+    <link rel="stylesheet" href="App/Css/styles.css">
     <!-- Font Anwesome -->
     <script src="https://kit.fontawesome.com/57b38ed15d.js"crossorigin="anonymous"></script>
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="index.php">
                 <img src="./App/Img/image 1.png" alt=""/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,13 +50,13 @@ if(isset($_POST['useri']) && isset($_POST['passi'])){
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <button type="button" class="btn btn-primary position-relative">
+                        <a href="index.php?p=car" class="btn btn-primary position-relative">
                             <i class="fas fa-shopping-cart"></i>
                             <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
                                 99+
                                 <span class="visually-hidden">unread messages</span>
                             </span>
-                        </button>
+                        </a>
                     </li>
                     <?php if(empty($_SESSION['user'])):?>
                     <li class="nav-item">
@@ -73,11 +70,17 @@ if(isset($_POST['useri']) && isset($_POST['passi'])){
                         </button>
                     </li>
                     <?php else:?>
-                        <li class="nav-item rounded-3 px-3">
-                            <div class="form-control">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?=$_SESSION['user'];?>
-                            </div>
-                        </li> 
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="index.php?p=clienteHome">Perfil</a></li>
+                                <li><a class="dropdown-item" href="#">Favoritos</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="index.php?c=ok">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
                     <?php endif;?>
                 </ul>
             </div>
