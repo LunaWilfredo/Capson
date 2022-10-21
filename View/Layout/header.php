@@ -1,5 +1,7 @@
 <?php 
-require_once './Controller/UsuarioController.php';
+include_once './Controller/UsuarioController.php';
+include_once './Controller/ProductosController.php';
+include_once './Controller/CarController.php';
 
 if(isset($_POST['nameu'])){
   $registro=UsuarioController::registrar();

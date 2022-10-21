@@ -43,10 +43,12 @@ class UsuarioController{
                 $info = $respuesta;
                 if($info >=1 && $info !=NULL){
                     foreach($info as $d){
+                        $did=$d['id_c'];
                         $dname=$d['name_c'];
                         $dlast=$d['last_c'];
                     }
                     session_start();
+                    $_SESSION['idc'] = $did; 
                     $_SESSION['user']= $dname." ".$dlast;
                 }
             }else{

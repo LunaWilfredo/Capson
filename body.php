@@ -1,7 +1,6 @@
 <?php include_once 'View/Layout/header.php';
 //lista de productos
 $productos = ProductosController::listarProductos();
-var_dump($productos);
 ?>
     <header>
       <div class="container-fluid bg-secondary p-5">
@@ -30,24 +29,28 @@ var_dump($productos);
 
     <section id="">
       <div class="container p-4">
-        <div class="row">
-          <?php foreach($productos as $prod):?>
-          <!-- producto inicio -->
-          <div class="col">
-            <div class="card bg-secondary p-2 rounded-3">
-              <img src="./App/Img/Productos/image 2.png" alt="" class="img mb-3"/>
-              <div class="">
-                <h6 class="text-light"><?=$prod['name_p']?></h6>
-                <h5 class="text-light"><?=$prod['price_p']?></h5>
+        <form action="" method="POST">
+          <div class="row">
+            <?php foreach($productos as $prod):?>
+            <!-- producto inicio -->
+            <div class="col">
+              <div class="card bg-secondary p-2 rounded-3">
+                <img src="./App/Img/Productos/image 2.png" alt="" class="img mb-3"/>
+                <div class="">
+                  <h6 class="text-light"><?=$prod['name_p']?></h6>
+                  <h5 class="text-light"><?=$prod['price_p']?></h5>
+                </div>
+                <a href="index.php?p=car&idp=<?=$prod['id_p']?>" class="btn btn-primary">
+                  <i class="fas fa-cart-plus"></i></a>
+                <!-- <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-cart-plus"></i>
+                </button> -->
               </div>
-              <button type="" class="btn btn-primary">
-                <i class="fas fa-cart-plus"></i>
-              </button>
             </div>
+            <!-- producto end -->
+            <?php endforeach;?>
           </div>
-          <!-- producto end -->
-          <?php endforeach;?>
-        </div>
+        </form>
       </div>
     </section>
 
