@@ -27,29 +27,48 @@ $productos = ProductosController::listarProductos();
       </div>
     </section>
 
-    <section id="">
+    <section id="productos">
       <div class="container p-4">
-        <form action="" method="POST">
+        <form action="index.php" name="formulario" method="POST">
+
           <div class="row">
             <?php foreach($productos as $prod):?>
             <!-- producto inicio -->
-            <div class="col">
-              <div class="card bg-secondary p-2 rounded-3">
-                <img src="./App/Img/Productos/image 2.png" alt="" class="img mb-3"/>
-                <div class="">
-                  <h6 class="text-light"><?=$prod['name_p']?></h6>
-                  <h5 class="text-light"><?=$prod['price_p']?></h5>
+            <div class="col-4 p-4">
+              <div class="row">
+                <!-- precio -->
+                <div class="col-12">
+                  <input type="hidden" name="id_p" id="id_p" value="<?=$prod['id_p']?>">
+                  <span class="text-light btn btn-warning">
+                    <?=$prod['price_p'].'$'?>
+                  </span>
+                  <input type="hidden" name="precio" id="precio" value="<?=$prod['price_p']?>">
+                </div> <!-- fin precio -->
+              </div>
+              <div class="row text-center">
+                <div class="col-12">
+                  <img src="./App/Img/Productos/image 2.png" alt="" class="img-fluid"/>
                 </div>
-                <a href="index.php?p=car&idp=<?=$prod['id_p']?>" class="btn btn-primary">
-                  <i class="fas fa-cart-plus"></i></a>
-                <!-- <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-cart-plus"></i>
-                </button> -->
+              </div>
+              <div class="row p-2">
+                <div class="col-12 text-center">
+                  <h6 class="text-dark"><?=$prod['name_p']?></h6>
+                  <input type="hidden" name="titulo" id="titulo" value="<?=$prod['name_p']?>">
+                </div>
+              </div>
+              <div class="row">
+                <input type="hidden" name="cantidad" id="cantidad" value="1">
+                <!-- <a href="index.php?p=car&idp=" class="btn btn-primary"> -->
+                <button type="submit" class="btn btn-primary">
+                  <i class="fas fa-cart-plus"></i> Añadir a carrito
+                </button>
+                <!-- </a> -->
               </div>
             </div>
             <!-- producto end -->
             <?php endforeach;?>
           </div>
+
         </form>
       </div>
     </section>

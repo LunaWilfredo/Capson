@@ -22,6 +22,14 @@ if(isset($_GET['c'])){
     $cerrar= New UsuarioController;
     $cerrar-> cerrarSesion($_GET['c']);
 }
+
+/*Pedidos*/
+//Registrar producto a carrito
+$carrito= CarController::addProducto();
+//listar productos de carrito
+$car=CarController::listarCompras();
+$indiceP=count($car);
+var_dump($indiceP);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -51,15 +59,6 @@ if(isset($_GET['c'])){
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a href="index.php?p=car" class="btn btn-primary position-relative">
-                            <i class="fas fa-shopping-cart"></i>
-                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"> 
-                                99+
-                                <span class="visually-hidden">unread messages</span>
-                            </span>
-                        </a>
-                    </li>
                     <?php if(empty($_SESSION['user'])):?>
                     <li class="nav-item">
                         <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#login">
@@ -70,8 +69,15 @@ if(isset($_GET['c'])){
                         <button type="button" class="btn text-light" data-bs-toggle="modal" data-bs-target="#registro">
                             Registrarse
                         </button>
+                        <span class="text-ligth"></span>
                     </li>
                     <?php else:?>
+                        <li class="nav-item">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#carrito">
+                                <i class="fas fa-shopping-cart"></i>
+                                <?=$indiceP?>
+                            </button>
+                        </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <?=$_SESSION['user'];?>

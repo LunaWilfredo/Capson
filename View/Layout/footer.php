@@ -74,3 +74,35 @@
       </div>
     </div>
 </div>
+
+<!-- Modal carrito -->
+<div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="carrito b" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+        </div>
+        <form action="" method="post">
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Nombre</label>
+              <input type="text" name="nameu" value="" class="form-control">
+  
+              <label for="">Apellido</label>
+              <input type="text" name="apeu" value="" class="form-control">
+  
+              <label for="">Correo</label>
+              <input type="text" name="correou" value="" class="form-control">
+  
+              <label for="">Contraseña</label>
+              <input type="text" name="claveu" value="" class="form-control">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-success">Registrarse</button>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
