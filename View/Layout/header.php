@@ -25,11 +25,11 @@ if(isset($_GET['c'])){
 
 /*Pedidos*/
 //Registrar producto a carrito
-$carrito= CarController::addProducto();
+//$carrito= CarController::addProducto();
 //listar productos de carrito
-$car=CarController::listarCompras();
-$indiceP=count($car);
-var_dump($indiceP);
+//$car=CarController::listarCompras();
+//$indiceP=count($car);
+//var_dump($indiceP);
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -80,28 +80,32 @@
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Iniciar Sesion</h5>
+          <h5 class="modal-title" id="carrito">Carrito</h5>
         </div>
         <form action="" method="post">
+
           <div class="modal-body">
-            <div class="form-group">
-              <label for="">Nombre</label>
-              <input type="text" name="nameu" value="" class="form-control">
-  
-              <label for="">Apellido</label>
-              <input type="text" name="apeu" value="" class="form-control">
-  
-              <label for="">Correo</label>
-              <input type="text" name="correou" value="" class="form-control">
-  
-              <label for="">Contraseña</label>
-              <input type="text" name="claveu" value="" class="form-control">
+            <div class="">
+              <div class="p-2">
+                <ul class="list-group mb-3">
+                  <li class="list-group-item d-flex justify-content-between lh-condensed">
+                    <div class="row col-12">
+                      <div class="col-6 p-0"><h6 class="my-0">Cantidad: :</h6></div>
+                      <div class="col-6 p-0">
+                        <span class="text-muted">s/.</span>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
+
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success">Registrarse</button>
           </div>
+
         </form>
       </div>
     </div>
