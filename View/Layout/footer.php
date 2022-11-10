@@ -74,36 +74,45 @@
       </div>
     </div>
 </div>
-
 <!-- Modal carrito -->
 <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="carrito b" aria-hidden="true">
-    <div class="modal-dialog modal-sm">
+    <div class="modal-dialog modal-md">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="carrito">Carrito</h5>
         </div>
         <form action="" method="post">
-
+          
           <div class="modal-body">
             <div class="">
               <div class="p-2">
                 <ul class="list-group mb-3">
+                <?php foreach($vercar as $ct):?>
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
                     <div class="row col-12">
-                      <div class="col-6 p-0"><h6 class="my-0">Cantidad: :</h6></div>
-                      <div class="col-6 p-0">
-                        <span class="text-muted">s/.</span>
+                      <div class="col-6 p-0" style="text-align: left;">
+                        <h6 class="my-0">Cantidad: <?=$ct['cantidad']?> : <?=$ct['producto']?> </h6>
+                      </div>
+                      <div class="col-6 p-0" style="text-align: right">
+                        <span class="text-muted" style="text-align: right;">$<?=$ct['precio']*$ct['cantidad']?></span>
                       </div>
                     </div>
+                  </li>
+                  <?php $total = $total + $ct['total']?>
+                  <input type="hidden" name="total" id="total" value="<?php $total?>">
+                  <?php endforeach?>
+                  <li class="list-group-item d-flex justify-content-between">
+                    <span class="" style="text-align: left;">Total(DLR):</span>
+                    <strong style="text-align: left;">$<?=$total?></strong>
                   </li>
                 </ul>
               </div>
             </div>
           </div>
-
+          
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
-            <button type="submit" class="btn btn-success">Registrarse</button>
+            <a href="index.php?p=car" class="btn btn-success">Continuar Pedido</a>
           </div>
 
         </form>

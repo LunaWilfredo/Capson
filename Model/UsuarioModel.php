@@ -20,13 +20,6 @@ class UsuarioModel{
     
     }
 
-    static public function prelog($tabla,$useri,$passi){
-        $sql="SELECT * FROM $tabla WHERE mail_c = '$useri' AND pass_c = '$passi' ";
-        $cn=Conexion::conexion()->prepare($sql);
-        $cn->execute();
-        return $cn->fetchAll();
-    }
-
     //funcion para obtenes datos de usuario 
     static public function login($user,$clave,$tabla){
         $sql="SELECT * FROM $tabla WHERE mail_c = '$user' AND pass_c = '$clave' ";
@@ -34,6 +27,32 @@ class UsuarioModel{
         $cn->execute();
         if($cn->execute()){
             return $cn->fetchAll();
+        }
+    }
+
+    static public function datosCliente($tabla,$idc){
+        $sql="SELECT * FROM $tabla WHERE id_c = $idc";
+        $cn=Conexion::conexion()->prepare($sql);
+        $cn->execute();
+        return $cn->fetchAll();
+    }
+
+    static public function updateDatos($tabla,$datos,$idc){
+        $sql="UPDATE $tabla SET `name_c`= :nameu,`last_c`=:lastu,`direccion_cl`=:direccionu,`pais_cl`=:paisu,`phone_cl`=:phoneu,`mail_c`=:mailu,`pass_c`=:passwordu WHERE id_c = $idc";
+        $cn=Conexion::conexion()->prepare($sql);
+
+        $cn->bindParam(':nameu',$datos['nameu'],PDO::PARAM_STR);
+        $cn->bindParam(':lastu',$datos['lastu'],PDO::PARAM_STR);
+        $cn->bindParam(':direccionu',$datos['direccionu'],PDO::PARAM_STR);
+        $cn->bindParam(':paisu',$datos['paisu'],PDO::PARAM_STR);
+        $cn->bindParam(':phoneu',$datos['phoneu'],PDO::PARAM_STR);
+        $cn->bindParam(':mailu',$datos['mailu'],PDO::PARAM_STR);
+        $cn->bindParam(':passwordu',$datos['passwordu'],PDO::PARAM_STR);
+
+        if($cn->execute()){
+            return 'ok';
+        }else{
+            return print_r(Conexion::conexion()->errorInfo());
         }
     }
 }

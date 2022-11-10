@@ -20,16 +20,17 @@ if(isset($_POST['useri']) && isset($_POST['passi'])){
 
 if(isset($_GET['c'])){
     $cerrar= New UsuarioController;
-    $cerrar-> cerrarSesion($_GET['c']);
+    $cerrar->cerrarSesion($_GET['c']);
 }
 
 /*Pedidos*/
 //Registrar producto a carrito
-//$carrito= CarController::addProducto();
+$carrito= CarController::addProducto();
 //listar productos de carrito
-//$car=CarController::listarCompras();
+if(isset($_SESSION['idc'])){
+    $vercar=CarController::listarCompras();
+}
 //$indiceP=count($car);
-//var_dump($indiceP);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -50,9 +51,9 @@ if(isset($_GET['c'])){
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light px-5">
-        <div class="container-fluid">
+        <div class="container">
             <a class="navbar-brand" href="index.php">
-                <img src="./App/Img/image 1.png" alt=""/>
+                <img src="./App/Img/image 1.png" alt="" class="rounded-circle"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -84,7 +85,7 @@ if(isset($_GET['c'])){
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="index.php?p=clienteHome">Perfil</a></li>
-                                <li><a class="dropdown-item" href="#">Favoritos</a></li>
+                                <!-- <li><a class="dropdown-item" href="#">Favoritos</a></li> -->
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="index.php?c=ok">Cerrar Sesión</a></li>
                             </ul>

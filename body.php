@@ -4,13 +4,48 @@ $productos = ProductosController::listarProductos();
 ?>
     <header>
       <div class="container-fluid bg-secondary p-5">
-        <div class="p-5 mx-5">
-          <h1 class="display-1 mx-5 px-5 text-light">
-            Productos para el cuidado de la salud de tu familia
-          </h1>
+        <div class="row">
+          <div class="col-6">
+            <h1 class="display-3 mx-5 p-5 text-light">
+              Productos Medicos
+            </h1>
+          </div>
+        </div>
+        <div class="col-6">
+          
         </div>
       </div>
     </header>
+
+    <section id="productos">
+      <div class="container d-flex justify-content-center">
+        <div class="row p-2">
+          <?php foreach($productos as $prod):?>
+          <!-- inicio producto -->
+            <div class="col bg-light p-2 text-center m-2 rounded">
+              <form action="" name="" method="post" class="form">
+                  <img src="./App/Img/Productos/image 2.png" alt="" class="img" style=""/>
+                  <div class="py-2 d-flex justify-content-start">
+                    <span class="text-light btn btn-warning ml-2"><?=$prod['price_p'].'$'?></span>
+                    <span class=" btn btn-light"><?=$prod['name_p']?></span>
+                  </div>
+                  <div class="">
+                    <input type="hidden" class="form-control" name="idp" id="idp" value="<?=$prod['id_p']?>">
+                    <input type="hidden" class="form-control" name="precio" id="precio" value="<?=$prod['price_p']?>">
+                    <input type="hidden" class="form-control" name="titulo" id="titulo" value="<?=$prod['name_p']?>">
+                    <input type="hidden" class="form-control" name="cantidad" id="cantidad" value="1">
+
+                    <button type="submit" class="btn btn-primary w-100">
+                      <i class="fas fa-cart-plus"></i> Añadir a carrito
+                    </button>
+                  </div>
+              </form>
+            </div>
+          <!-- end producto -->
+          <?php endforeach;?>
+        </div>
+      </div>
+    </section>
 
     <section id="">
       <div class="container p-5">
@@ -19,57 +54,11 @@ $productos = ProductosController::listarProductos();
             <img src="./App/Img/Rectangle 22.png" alt="" class="img rounded" />
           </div>
           <div
-            class="col d-flex m-auto justify-content-center align-content-center display-6"
-          >
-            Somos una empresa productora de productos de salud para hospitales nacionales o privados.Con mas de 30 años en el mercado de la salud.
+            class="col d-flex m-auto justify-content-center align-content-center display-6">
+            Somos una empresa distribuidora de productos de Medicos para hospitales nacionales o privados.
+            Con mas de 30 años en el mercado de la salud.
           </div>
         </div>
-      </div>
-    </section>
-
-    <section id="productos">
-      <div class="container p-4">
-        <form action="index.php" name="formulario" method="POST">
-
-          <div class="row">
-            <?php foreach($productos as $prod):?>
-            <!-- producto inicio -->
-            <div class="col-4 p-4">
-              <div class="row">
-                <!-- precio -->
-                <div class="col-12">
-                  <input type="hidden" name="id_p" id="id_p" value="<?=$prod['id_p']?>">
-                  <span class="text-light btn btn-warning">
-                    <?=$prod['price_p'].'$'?>
-                  </span>
-                  <input type="hidden" name="precio" id="precio" value="<?=$prod['price_p']?>">
-                </div> <!-- fin precio -->
-              </div>
-              <div class="row text-center">
-                <div class="col-12">
-                  <img src="./App/Img/Productos/image 2.png" alt="" class="img-fluid"/>
-                </div>
-              </div>
-              <div class="row p-2">
-                <div class="col-12 text-center">
-                  <h6 class="text-dark"><?=$prod['name_p']?></h6>
-                  <input type="hidden" name="titulo" id="titulo" value="<?=$prod['name_p']?>">
-                </div>
-              </div>
-              <div class="row">
-                <input type="hidden" name="cantidad" id="cantidad" value="1">
-                <!-- <a href="index.php?p=car&idp=" class="btn btn-primary"> -->
-                <button type="submit" class="btn btn-primary">
-                  <i class="fas fa-cart-plus"></i> Añadir a carrito
-                </button>
-                <!-- </a> -->
-              </div>
-            </div>
-            <!-- producto end -->
-            <?php endforeach;?>
-          </div>
-
-        </form>
       </div>
     </section>
 

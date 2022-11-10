@@ -20,17 +20,6 @@ class UsuarioController{
         }
     }
 
-    //Funcion de validacion de datos
-    static public function prelog(){
-        if(isset($_POST['useri']) && !empty($_POST['useri']) && isset($_POST['passi']) && !empty($_POST['passi'])){
-            $tabla="clientes";
-            $useri=$_POST['useri'];
-            $passi=$_POST['passi'];
-            $respuesta=UsuarioModel::prelog($tabla,$useri,$passi);
-            return $respuesta;
-        }
-    }
-
     //Funcion de inicio de sesion
     static public function login($user,$clave){
         if(isset($_POST['useri']) && !empty($_POST['useri']) && isset($_POST['passi']) && !empty($_POST['passi'])){
@@ -65,7 +54,6 @@ class UsuarioController{
                 </script>
             ";
             }
-            //var_dump($info);
         }
         return $respuesta;
     }
@@ -82,5 +70,36 @@ class UsuarioController{
         }
         return $cerrar;
     }
+
+    //Funcion de validacion de datos
+    static public function datosCliente(){
+        if(isset($_SESSION['idc'])){
+                $tabla="clientes";
+                $idc=$_SESSION['idc'];
+                $respuesta=UsuarioModel::datosCliente($tabla,$idc);
+                return $respuesta;
+        }
+    }
+
+    //funcion de actualizacion de datos de cliente
+    static public function updateDatos($idc){
+        if(isset($_POST['idcu']) && !empty($_POST['idcu'])){
+            $tabla="clientes";
+            $idc =$_POST['idcu'];
+            $datos=array(
+                'nameu'=>$_POST['nombreu'],
+                'lastu'=>$_POST['apellidou'],
+                'direccionu'=>$_POST['direccionu'],
+                'paisu'=>$_POST['paisu'],
+                'phoneu'=>$_POST['movilu'],
+                'mailu'=>$_POST['correou'],
+                'passwordu'=>$_POST['claveu']
+            );
+            $respuesta=UsuarioModel::updateDatos($tabla,$datos,$idc);
+            return $respuesta;
+        }
+    }
+
+    
 }
 ?>
