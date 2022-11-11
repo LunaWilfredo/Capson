@@ -6,6 +6,21 @@ $car=CarController::listarCompras();
 if(isset($_POST['idd'])){
   $idd=$_POST['idd'];
   $delete=CarController::deleteProducto($idd);
+  if($delete=='ok'){
+    echo '<script>
+            if(window.history.replaceState){
+                window.history.repaceState(null,null,window.location.href);
+            }
+        </script>';
+    echo "<div class='alert alert-danger text-center'>
+            Producto Eliminado!
+        </div>
+        <script>
+            setTimeout(function(){
+                window.location = 'index.php?p=pedido';
+            },1000);
+        </script>";
+  }
 }
 //actualizar cantidad producto
 if(isset($_POST['idu']) && isset($_POST['cantu'])){
@@ -26,7 +41,7 @@ if(isset($_POST['idu']) && isset($_POST['cantu'])){
                 window.location = 'index.php?p=pedido';
             },1000);
         </script>";
-}
+  }
 }
 
 ?>

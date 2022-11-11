@@ -86,6 +86,11 @@
           <div class="modal-body">
             <div class="">
               <div class="p-2">
+              <?php if(empty($vercar)):?>
+                <ul class="list-group mb-3 text-center">
+                  <h2 class="h5 text-secondary">Vacio</h2>
+                </ul>
+              <?php else:?>
                 <ul class="list-group mb-3">
                 <?php foreach($vercar as $ct):?>
                   <li class="list-group-item d-flex justify-content-between lh-condensed">
@@ -106,6 +111,7 @@
                     <strong style="text-align: left;">$<?=$total?></strong>
                   </li>
                 </ul>
+              <?php endif?>
               </div>
             </div>
           </div>

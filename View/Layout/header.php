@@ -2,6 +2,7 @@
 include_once './Controller/UsuarioController.php';
 include_once './Controller/ProductosController.php';
 include_once './Controller/CarController.php';
+include_once './Controller/PedidosController.php';
 
 if(isset($_POST['nameu'])){
   $registro=UsuarioController::registrar();
@@ -85,7 +86,7 @@ if(isset($_SESSION['idc'])){
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="index.php?p=clienteHome">Perfil</a></li>
-                                <!-- <li><a class="dropdown-item" href="#">Favoritos</a></li> -->
+                                <li><a class="dropdown-item" href="index.php?p=pedidosCliente">Mis Pedidos</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item" href="index.php?c=ok">Cerrar Sesión</a></li>
                             </ul>

@@ -40,7 +40,7 @@ if(isset($_POST['idcu'])){
     <div class="container p-5">
         <form action="" method="post">
             <?php foreach($datosu as $dt):?>
-                <div class="row">
+                <div class="row p-5 m-auto">
                     <div class="col">
                         <!-- <img src="./App/Img/Rectangle 22.png" alt="" class="img rounded" /> -->
                         <div class="row">
@@ -111,9 +111,5 @@ if(isset($_POST['idcu'])){
                 </div>
             <?php endforeach?>
         </form>
-        <hr class="bg-dark">
-        <div class="row">
-            <h6 class="h3">Pedidos Recientes</h6>
-        </div>
     </div>
 </section>
