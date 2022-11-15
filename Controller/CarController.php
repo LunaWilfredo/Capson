@@ -61,7 +61,7 @@ class CarController{
             }
             //datos de productos
             $datos=array(
-                'ref'=>$ref=$ref.$idc,
+                'ref'=>$ref.$idc,
                 'producto'=>$_POST['codep'],
                 'cantidad'=>$_POST['cantp'],
                 'precio'=>$_POST['preciop'],
@@ -75,9 +75,9 @@ class CarController{
         if($productos){
             $tablapd="pedidos";
             $datos=array(
-                'ref'=>$ref=$ref.$idc,
+                'ref'=>$ref.$idc,
                 'cliente'=>$idc,
-                'estado'=>'pendiente',
+                'estado'=>5,
                 'medio'=>'Pago en local',
                 'total'=>$_POST['totalG'],
                 'fecha'=>$fecha

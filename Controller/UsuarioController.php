@@ -8,13 +8,14 @@ class UsuarioController{
         if(isset($_POST['nameu'])&&!empty($_POST['nameu'])){
             $tabla= "clientes";
             $datos= array(
-                "name"=>$_POST['nameu'],
-                "last"=>$_POST['apeu'],
-                "mail"=>$_POST['correou'],
-                "pass"=>$_POST['claveu']
+                'name'=>$_POST['nameu'],
+                'last'=>$_POST['apeu'],
+                'mail'=>$_POST['correou'],
+                'pass'=>$_POST['claveu'],
+                'fecha'=>date('d/m/Y'),
+                'rol'=>2,
+                'estado'=>1
             );
-            var_dump($datos);
-            var_dump($tabla);
             $respuesta=UsuarioModel::registrar($tabla,$datos);
             return $respuesta;
         }
@@ -35,10 +36,14 @@ class UsuarioController{
                         $did=$d['id_c'];
                         $dname=$d['name_c'];
                         $dlast=$d['last_c'];
+                        $drol=$d['fk_id_rol'];
+                        $destado=$d['fk_id_std'];
                     }
                     session_start();
                     $_SESSION['idc'] = $did; 
                     $_SESSION['user']= $dname." ".$dlast;
+                    $_SESSION['rol']=$drol;
+                    $_SESSION['estado']=$destado;
                 }
             }else{
                 echo '<script>

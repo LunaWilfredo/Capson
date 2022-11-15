@@ -76,11 +76,11 @@ class CarModel
 
     //registro de pedido
    static public function Pedido($tablapd,$datos){
-        $sql = "INSERT INTO $tablapd (`ref_f`, `fk_id_cl`, `estado_f`, `medio_f`, `total_f`, `fecha_f`) VALUES (:ref,:cliente,:estado,:medio,:total,:fecha)";
+        $sql = "INSERT INTO $tablapd (`ref_f`, `fk_id_cl`, `fk_id_std_f`, `medio_f`, `total_f`, `fecha_f`) VALUES (:ref,:cliente,:estado,:medio,:total,:fecha)";
         $cn = Conexion::conexion()->prepare($sql);
         $cn->bindParam(':ref',$datos['ref'], PDO::PARAM_STR);
         $cn->bindParam(':cliente',$datos['cliente'], PDO::PARAM_INT);
-        $cn->bindParam(':estado',$datos['estado'], PDO::PARAM_STR);
+        $cn->bindParam(':estado',$datos['estado'], PDO::PARAM_INT);
         $cn->bindParam(':medio',$datos['medio'], PDO::PARAM_STR);
         $cn->bindParam(':total',$datos['total'], PDO::PARAM_STR);
         $cn->bindParam(':fecha',$datos['fecha'], PDO::PARAM_STR);

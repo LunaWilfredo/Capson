@@ -5,7 +5,7 @@ include_once 'View/Layout/header.php';
 //body
 if(isset($_GET['p'])&&!empty($_GET['p'])){
   $p=$_GET['p'];
-  if($p=='body' || $p=='clienteHome' || $p='car' || $p='pedido' || $p='clienteHome' || $p='pagar'||$p='pedidosCliente'){
+  if($p=='body' || $p=='clienteHome' || $p='car' || $p='pedido' || $p='clienteHome' || $p='pagar'||$p='pedidosCliente'||$p='detallePedido'||$p='adminHome'||$p='roles'||$p='usuariosAdmin'||$p='pedidosAdmin'||$p='usuariosAdmin'){
     require_once 'View/Content/'.$_GET['p'].'.php';
   }else{
     require_once 'body.php';

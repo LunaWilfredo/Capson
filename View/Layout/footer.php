@@ -31,7 +31,7 @@
               <label for="">Usuario</label>
               <input type="text" name="useri" value="" class="form-control">
               <label for="">Contraseña</label>
-              <input type="text" name="passi" value="" class="form-control">
+              <input type="password" name="passi" value="" class="form-control">
             </div>
           </div>
           <div class="modal-footer">
@@ -111,7 +111,7 @@
                     <strong style="text-align: left;">$<?=$total?></strong>
                   </li>
                 </ul>
-              <?php endif?>
+              
               </div>
             </div>
           </div>
@@ -120,7 +120,7 @@
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
             <a href="index.php?p=car" class="btn btn-success">Continuar Pedido</a>
           </div>
-
+          <?php endif?>
         </form>
       </div>
     </div>

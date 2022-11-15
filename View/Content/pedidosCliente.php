@@ -1,7 +1,6 @@
 <?php
 //listar pedido y vista detalle
-$pedido=PedidosController::listarPedidos();
-var_dump($pedido);
+$pedido = PedidosController::listarPedidos();
 ?>
     <header>
       <div class="container-fluid bg-secondary p-5">
@@ -37,15 +36,18 @@ var_dump($pedido);
                   </tr>
                 </thead>
                 <tbody>
-                  <?php $i=0;foreach($pedido as $pd):$i++;?>
+                  <?php $i=0;foreach($pedido as $vd):$i++;?>
                   <tr>
                     <th scope="row"><?=$i;?></th>
-                    <td><?=$pd['id_f']?></td>
-                    <td><?//=//$pd['ref_f']?></td>
-                    <td><?//=//$pd['id_f']?></td>
-                    <td><?//=$pd['id_f']?></td>
-                    <td><?//=$pd['id_f']?></td>
-                    <td><?//=$pd['id_f']?></td>
+                    <td><?=$vd['codref']?></td>
+                    <td><?=$vd['nombre']." ".$vd['apellido']?></td>
+                    <td><?=$vd['estado']?></td>
+                    <td><?=$vd['mediop']?></td>
+                    <td><?=$vd['total']?></td>
+                    <td><?=$vd['fecha']?></td>
+                    <td>
+                        <a href="index.php?p=detallePedido&refp=<?=$vd['codref']?>" class="btn btn-info text-light"><i class="fas fa-eye"></i></a>
+                    </td>
                   </tr>
                   <?php endforeach?>
                 </tbody>

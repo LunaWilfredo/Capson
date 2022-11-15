@@ -61,14 +61,14 @@ if(isset($_POST['idcu'])){
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
+                        <!-- <div class="row">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="" class="label">Dirección</label>
-                                    <input type="text" class="form-control" name="direccionu" value="<?=$dt['direccion_cl']?>">
+                                    <input type="text" class="form-control" name="direccionu" value="">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="row">
                             <div class="col">
                                 <div class="form-group">
