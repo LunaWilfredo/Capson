@@ -79,10 +79,10 @@ class UsuarioController{
     //Funcion de validacion de datos
     static public function datosCliente(){
         if(isset($_SESSION['idc'])){
-                $tabla="clientes";
-                $idc=$_SESSION['idc'];
-                $respuesta=UsuarioModel::datosCliente($tabla,$idc);
-                return $respuesta;
+            $tabla="clientes";
+            $idc=$_SESSION['idc'];
+            $respuesta=UsuarioModel::datosCliente($tabla,$idc);
+            return $respuesta;
         }
     }
 

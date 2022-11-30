@@ -13,7 +13,7 @@ class PedidosModel{
         $sql="SELECT pd.id_f as 'factura',pcl.ref_pd as 'referencia',pcl.cantidad_pd as 'cantidad',p.code_p as 'codproducto',p.name_p as 'nombrep', pcl.precio_pd as 'precio',pcl.total_p as 'totalp',cl.name_c as 'nombrec',cl.last_c as 'apellidoc',std.nombre_std as 'estado',pd.medio_f as 'mediopago',pd.total_f as 'totalgeneral',pd.fecha_f as 'fechapedido' FROM $tabla pcl INNER JOIN productos p ON pcl.producto_pd = p.id_p INNER JOIN pedidos pd ON pcl.ref_pd = pd.ref_f INNER JOIN clientes cl ON pd.fk_id_cl=cl.id_c INNER JOIN estados std ON pd.fk_id_std_f = std.id_std WHERE pcl.ref_pd = '$ref' ";
         $cn=Conexion::conexion()->prepare($sql);
         $cn->execute();
-        return $cn->fetchAll();
+        return $cn->fetchAll(); 
     }
     //cambiar estado de pedido
     static public function cambiarEstPedido($tabla,$datos){

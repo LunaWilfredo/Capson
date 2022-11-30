@@ -101,5 +101,18 @@ class AdminController{
         $respuesta=AdminModel::cantidadPdp($tabla);
         return $respuesta;
     }
-
+    //grafico
+    static public function cantidadPdxm(){
+        $tabla="pedidos";
+        for ($i=0; $i <= 12; $i++) { 
+            $m=$i;
+        }
+        $respuesta=AdminModel::cantidadPdxm($tabla,$m);
+        return $respuesta;
+    }
+    static public function cantidadPdxd(){
+        $tabla="pedidos";
+        $respuesta=AdminModel::cantidadPdxd($tabla);
+        return $respuesta;
+    }
 }

@@ -46,7 +46,8 @@ $pedido = PedidosController::listarPedidos();
                     <td><?=$vd['total']?></td>
                     <td><?=$vd['fecha']?></td>
                     <td>
-                        <a href="index.php?p=detallePedido&refp=<?=$vd['codref']?>" class="btn btn-info text-light"><i class="fas fa-eye"></i></a>
+                        <a href="index.php?p=detallePedido&refp=<?=$vd['codref']?>" class="btn btn-warning text-light"><i class="fas fa-eye"></i></a>
+                        <a href="pdfExport.php?refp=<?=$vd['codref']?>" class="btn btn-danger" target="_blanck"><i class="fas fa-file-pdf"></i></a>
                     </td>
                   </tr>
                   <?php endforeach?>

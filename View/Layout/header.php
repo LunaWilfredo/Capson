@@ -47,6 +47,9 @@ if(isset($_SESSION['idc'])){
 }
 //$indiceP=count($car);
 $estados=AdminController::listaEst();
+
+$g1=AdminController::cantidadPDxm();
+$g2=AdminController::cantidadPdxd();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -63,6 +66,8 @@ $estados=AdminController::listaEst();
     <link rel="stylesheet" href="App/Css/styles.css">
     <!-- Font Anwesome -->
     <script src="https://kit.fontawesome.com/57b38ed15d.js"crossorigin="anonymous"></script>
+    <!-- google charts -->
+    <script src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
 
   <body>

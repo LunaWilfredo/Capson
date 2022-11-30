@@ -13,6 +13,24 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
+    <script src="App/JS/main.js"></script>
+      <!--  Chart js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.7.3/dist/Chart.bundle.min.js"></script>
+
+    <!--Chartist Chart-->
+    <script src="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartist-plugin-legend@0.6.2/chartist-plugin-legend.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery.flot@0.8.3/jquery.flot.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-pie@1.0.0/src/jquery.flot.pie.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flot-spline@0.0.1/js/jquery.flot.spline.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/simpleweather@3.1.0/jquery.simpleWeather.min.js"></script>
+    <script src="assets/js/init/weather-init.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.js"></script>
+    <script src="assets/js/init/fullcalendar-init.js"></script>
   </body>
 </html>
 
@@ -74,6 +92,7 @@
       </div>
     </div>
 </div>
+
 <!-- Modal carrito -->
 <div class="modal fade" id="carrito" tabindex="-1" aria-labelledby="carrito b" aria-hidden="true">
     <div class="modal-dialog modal-md">
@@ -125,3 +144,56 @@
       </div>
     </div>
 </div>
+
+<script type="text/javascript">
+//grafico comparativo x mes
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+// Set Data
+var data = google.visualization.arrayToDataTable([
+  ['Mes', 'Cantidad'],
+  <?php foreach($g1 as $ge):?>
+    ['<?=date("M", strtotime($ge['fecha_f']))?>',<?=$ge['cantidad']?>],
+    <?php endforeach?>
+  ]);
+    // Set Options
+    var options = {
+      title: 'Pedidos x Mes',
+      hAxis: {title: 'Mes'},
+      vAxis: {title: 'Cantidad'},
+      legend: 'yes'
+    };
+    // Draw Chart
+    var chart = new google.visualization.LineChart(document.getElementById('grafico1'));
+    chart.draw(data, options);
+}
+</script>
+
+<script type="text/javascript">
+  //grafico comparativo x dia
+google.charts.load('current',{packages:['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+// Set Data
+var data = google.visualization.arrayToDataTable([
+  ['Fecha', 'Monto'],
+  <?php foreach($g2 as $ge2):?>
+    ['<?=$ge2['fecha_f']?>',<?=$ge2['cantidad']?>],
+  <?php endforeach?>
+  ]);
+  
+  // Set Options
+  var options = {
+    title: 'Pedidos x Dia',
+    hAxis: {title: 'Fecha'},
+    vAxis: {title: 'Monto'},
+    legend: 'yes'
+  };
+    // Draw Chart
+    var chart = new google.visualization.LineChart(document.getElementById('grafico2'));
+    chart.draw(data, options);
+}
+</script>

@@ -92,4 +92,19 @@ class AdminModel{
         $cn->execute();
         return $cn->fetchAll();
     }
+
+    //graficos
+    static public function cantidadPdxm($tabla,$m){
+        $sql="SELECT *,COUNT(`id_f`) as 'cantidad' FROM $tabla WHERE `fecha_f` BETWEEN '01-$m-2022' AND '30-$m-2022'GROUP BY `fecha_f` ";
+        $cn=Conexion::conexion()->prepare($sql);
+        $cn->execute();
+        return $cn->fetchAll();
+    }
+    static public function cantidadPdxd($tabla){
+        $sql="SELECT *,COUNT(`id_f`) as 'cantidad' FROM $tabla GROUP BY `fecha_f`";
+        $cn=Conexion::conexion()->prepare($sql);
+        $cn->execute();
+        return $cn->fetchAll();
+    }
+
 }
